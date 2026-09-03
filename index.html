@@ -2,21 +2,72 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover, explore and save cocktail recipes with The Random Cocktail.">
     <title>The Random Cocktail</title>
-    <link rel="stylesheet" href="asinc.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
-    <header>
-        <h1>The Random Cocktail</h1>
-        <button id="random_button" onclick="obtenerCoctel()">RANDOMIZE</button>
+    <header class="site-header">
+        <a class="brand" href="#top" aria-label="The Random Cocktail home">
+            <span class="brand-mark" aria-hidden="true">🍸</span>
+            <span>The Random Cocktail</span>
+        </a>
+        <nav class="site-nav" aria-label="Main navigation">
+            <a href="#discover">Discover</a>
+            <a href="#favorites">Favorites <span id="favorite-count" class="count-badge">0</span></a>
+        </nav>
     </header>
-    <main>
-        <section id="container">
-            <div id="random_item"></div>
+
+    <main id="top">
+        <section id="discover" class="hero section-shell">
+            <div class="hero-copy">
+                <p class="eyebrow">COCKTAIL DISCOVERY</p>
+                <h1>Find something<br><em>worth mixing.</em></h1>
+                <p class="hero-description">Explore cocktail recipes, discover new drinks and keep your favorites close at hand.</p>
+                <button id="random-button" class="button button-primary" type="button">
+                    <span>Surprise me</span><span aria-hidden="true">→</span>
+                </button>
+            </div>
+            <div class="hero-accent" aria-hidden="true">
+                <span class="accent-ring"></span>
+                <span class="accent-glass">🍸</span>
+            </div>
         </section>
-        <img id="imagen">
-        <section id="guardados"></section>
+
+        <section class="cocktail-section section-shell" aria-labelledby="cocktail-heading">
+            <div id="cocktail-status" class="status" role="status" aria-live="polite"></div>
+            <article id="cocktail-card" class="cocktail-card is-empty">
+                <div class="empty-state">
+                    <span class="empty-icon" aria-hidden="true">✦</span>
+                    <h2 id="cocktail-heading">Your next cocktail is waiting.</h2>
+                    <p>Hit “Surprise me” to discover a random recipe.</p>
+                </div>
+            </article>
+        </section>
+
+        <section id="favorites" class="favorites-section section-shell" aria-labelledby="favorites-heading">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">YOUR COLLECTION</p>
+                    <h2 id="favorites-heading">Saved favorites</h2>
+                </div>
+                <span id="favorites-summary" class="muted-text">No favorites yet</span>
+            </div>
+            <div id="favorites-grid" class="favorites-grid"></div>
+        </section>
     </main>
-    <script src="asinc.js"></script>
+
+    <footer class="site-footer">
+        <p>The Random Cocktail · Powered by TheCocktailDB</p>
+    </footer>
+
+    <script type="module" src="js/app.js"></script>
 </body>
 </html>
