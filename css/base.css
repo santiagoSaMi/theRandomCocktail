@@ -1,17 +1,23 @@
 :root {
     --bg: #f7f3ed;
+    --background: #f7f3ed;
     --surface: #fffdf9;
     --surface-muted: #eee8df;
     --text: #1f1b18;
     --muted: #746b63;
     --accent: #b75d35;
     --accent-dark: #8f4222;
+    --accent-soft: #f0dfd5;
+    --accent-contrast: #fff;
     --border: #ded6cc;
     --shadow: 0 20px 60px rgba(45, 34, 25, 0.10);
+    --shadow-sm: 0 8px 24px rgba(45, 34, 25, 0.08);
+    --shadow-md: 0 16px 36px rgba(45, 34, 25, 0.12);
     --radius-lg: 28px;
     --radius-md: 18px;
     --font-body: "DM Sans", sans-serif;
     --font-display: "Playfair Display", serif;
+    --display-font: "Playfair Display", serif;
 }
 
 * { box-sizing: border-box; }
@@ -42,14 +48,19 @@ body {
 html[data-theme="dark"] {
     color-scheme: dark;
     --bg: #171412;
+    --background: #171412;
     --surface: #211c19;
     --surface-muted: #2a2420;
     --text: #f5efe8;
     --muted: #aaa097;
     --accent: #df8052;
     --accent-dark: #c4663b;
+    --accent-soft: #3a2922;
+    --accent-contrast: #171412;
     --border: #403730;
     --shadow: 0 20px 60px rgba(0, 0, 0, .28);
+    --shadow-sm: 0 8px 24px rgba(0, 0, 0, .18);
+    --shadow-md: 0 16px 36px rgba(0, 0, 0, .25);
 }
 html[data-theme="dark"] .button-primary { background: #f5efe8; color: #171412; }
 html[data-theme="dark"] .button-primary:hover { background: #fff; }

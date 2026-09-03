@@ -22,6 +22,7 @@
         </a>
         <nav class="site-nav" aria-label="Main navigation">
             <a href="#discover">Discover</a>
+            <a href="#explore">Explore</a>
             <a href="#favorites">Favorites <span id="favorite-count" class="count-badge">0</span></a>
             <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch theme">
                 <span aria-hidden="true">☾</span>
@@ -63,10 +64,45 @@
             </article>
         </section>
 
+
+        <section id="explore" class="explore-section section-shell" aria-labelledby="explore-heading">
+            <div class="section-heading explore-heading">
+                <div>
+                    <div class="section-kicker"><span>02</span><span>EXPLORE</span></div>
+                    <h2 id="explore-heading">Browse the bar.</h2>
+                </div>
+                <span id="search-summary" class="muted-text">Search by name or filter your options</span>
+            </div>
+
+            <form id="search-form" class="search-panel">
+                <label class="search-field">
+                    <span class="sr-only">Search cocktails</span>
+                    <input id="search-input" type="search" placeholder="Search cocktails by name..." autocomplete="off">
+                    <button type="submit" class="search-submit" aria-label="Search">⌕</button>
+                </label>
+                <label class="filter-field">
+                    <span>Category</span>
+                    <select id="category-filter">
+                        <option value="">All categories</option>
+                    </select>
+                </label>
+                <label class="filter-field">
+                    <span>Ingredient</span>
+                    <select id="ingredient-filter">
+                        <option value="">All ingredients</option>
+                    </select>
+                </label>
+                <button id="clear-filters" class="button button-secondary" type="button">Clear</button>
+            </form>
+
+            <div id="explore-status" class="status" role="status" aria-live="polite"></div>
+            <div id="results-grid" class="results-grid"></div>
+        </section>
+
         <section id="favorites" class="favorites-section section-shell" aria-labelledby="favorites-heading">
             <div class="section-heading">
                 <div>
-                    <div class="section-kicker"><span>02</span><span>COLLECTION</span></div>
+                    <div class="section-kicker"><span>03</span><span>COLLECTION</span></div>
                     <h2 id="favorites-heading">Saved favorites</h2>
                 </div>
                 <span id="favorites-summary" class="muted-text">No favorites yet</span>
