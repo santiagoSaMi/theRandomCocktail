@@ -32,10 +32,14 @@ export function renderCocktail(container, cocktail) {
                 <p class="instructions">${escapeHTML(cocktail.instructions || 'No instructions available.')}</p>
 
                 <div class="cocktail-actions">
-                    <button class="button button-secondary favorite-button ${favorite ? 'is-favorite' : ''}" data-action="favorite" type="button">
-                        ${favorite ? '♥ Saved' : '♡ Add to favorites'}
+                    <button class="button button-secondary favorite-button ${favorite ? 'is-favorite' : ''}" data-action="favorite" type="button" aria-pressed="${favorite}">
+                        ${favorite ? 'Saved' : 'Add to favorites'}
+                    </button>
+                    <button class="button button-secondary share-button" data-action="share" type="button">
+                        Share recipe
                     </button>
                 </div>
+                <p class="share-feedback" id="share-feedback" role="status" aria-live="polite"></p>
             </div>
         </div>
     `;

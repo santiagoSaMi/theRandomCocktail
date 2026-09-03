@@ -108,3 +108,11 @@
 .results-empty h3 { margin: 8px 0 4px; color: var(--text); font-family: var(--display-font); font-size: 25px; }
 .results-empty p { margin: 0; }
 .explore-heading { align-items: end; }
+
+
+/* Recipe actions */
+.cocktail-actions { flex-wrap: wrap; }
+.share-button { flex: 0 1 auto; }
+.share-feedback { min-height: 1.2em; margin: 10px 0 0; color: var(--accent); font-size: .8rem; }
+.favorite-button::before { content: "♡"; margin-right: 8px; font-size: 1.1rem; line-height: 0; }
+.favorite-button.is-favorite::before { content: "♥"; }

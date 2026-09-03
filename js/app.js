@@ -139,6 +139,25 @@ async function runSearch() {
     }
 }
 
+async function shareCurrentCocktail() {
+    if (!currentCocktail) return;
+    const shareUrl = `${window.location.origin}${window.location.pathname}?cocktail=${encodeURIComponent(currentCocktail.id)}`;
+    const feedback = document.querySelector('#share-feedback');
+    try {
+        if (navigator.share) {
+            await navigator.share({ title: currentCocktail.name, text: `Check out ${currentCocktail.name}`, url: shareUrl });
+            if (feedback) feedback.textContent = 'Recipe shared.';
+        } else if (navigator.clipboard) {
+            await navigator.clipboard.writeText(shareUrl);
+            if (feedback) feedback.textContent = 'Recipe link copied to clipboard.';
+        } else {
+            window.prompt('Copy this recipe link:', shareUrl);
+        }
+    } catch (error) {
+        if (error.name !== 'AbortError' && feedback) feedback.textContent = 'Could not share the recipe.';
+    }
+}
+
 randomButton.addEventListener('click', loadRandomCocktail);
 
 themeToggle.addEventListener('click', () => {
@@ -161,8 +180,9 @@ clearFilters.addEventListener('click', () => {
 });
 
 cocktailCard.addEventListener('click', event => {
-    const button = event.target.closest('[data-action="favorite"]');
+    const button = event.target.closest('[data-action]');
     if (!button || !currentCocktail) return;
+    if (button.dataset.action === 'share') { shareCurrentCocktail(); return; }
     if (isFavorite(currentCocktail.id)) {
         removeFavorite(currentCocktail.id);
         cocktailStatus.textContent = `${currentCocktail.name} was removed from your favorites.`;
@@ -198,3 +218,10 @@ resultsGrid.addEventListener('click', event => {
 
 updateFavoritesUI();
 loadFilterOptions();
+
+const sharedCocktailId = new URLSearchParams(window.location.search).get('cocktail');
+if (sharedCocktailId) {
+    loadCocktailById(sharedCocktailId);
+} else {
+    loadRandomCocktail();
+}
