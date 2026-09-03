@@ -22,3 +22,18 @@
     .favorites-grid { grid-template-columns: 1fr; }
     .section-heading { align-items: start; flex-direction: column; }
 }
+
+@media (max-width: 700px) {
+    .site-header { min-height: 72px; }
+    .site-nav { gap: 14px; }
+    .site-nav a:first-child { display: none; }
+    .brand { font-size: .92rem; }
+    .hero { padding-block: 55px 35px; }
+    .hero-actions { flex-wrap: wrap; }
+    .hero-accent { min-height: 280px; }
+    .accent-glass { font-size: 7rem; }
+    .orbit-one { width: 250px; height: 130px; }
+    .orbit-two { width: 290px; height: 160px; }
+    .orbit-three { width: 210px; height: 270px; }
+    .site-footer { flex-direction: column; }
+}

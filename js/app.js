@@ -10,8 +10,21 @@ const cocktailStatus = document.querySelector('#cocktail-status');
 const favoritesGrid = document.querySelector('#favorites-grid');
 const favoriteCount = document.querySelector('#favorite-count');
 const favoritesSummary = document.querySelector('#favorites-summary');
+const themeToggle = document.querySelector('#theme-toggle');
 
 let currentCocktail = null;
+
+function applyTheme(theme) {
+    document.documentElement.dataset.theme = theme;
+    const dark = theme === 'dark';
+    themeToggle.querySelector('span').textContent = dark ? '☀' : '☾';
+    themeToggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+    document.querySelector('meta[name=theme-color]').setAttribute('content', dark ? '#171412' : '#f7f3ed');
+}
+
+const savedTheme = localStorage.getItem('random-cocktail:theme');
+const preferredTheme = savedTheme || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+applyTheme(preferredTheme);
 
 function updateFavoritesUI() {
     const favorites = getFavorites();
@@ -65,6 +78,12 @@ function setBusy(busy) {
 }
 
 randomButton.addEventListener('click', loadRandomCocktail);
+
+themeToggle.addEventListener('click', () => {
+    const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    localStorage.setItem('random-cocktail:theme', nextTheme);
+    applyTheme(nextTheme);
+});
 
 cocktailCard.addEventListener('click', event => {
     const button = event.target.closest('[data-action="favorite"]');
